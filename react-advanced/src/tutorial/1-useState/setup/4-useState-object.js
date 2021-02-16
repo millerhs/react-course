@@ -1,7 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const UseStateObject = () => {
-  return <h2>useState object example</h2>;
-};
+  const [person, setPerson] = useState({
+    name: 'peter',
+    age: 24,
+    message: 'random message',
+  })
 
-export default UseStateObject;
+  const changeMessage = () => {
+    // Using the spread operator here will copy the old values of the person object (...person)
+    //  And then overwrite the message property with the message parameter
+    setPerson({ ...person, message: 'hello world' })
+  }
+
+  return (
+    <>
+      <h3>{person.name}</h3>
+      <h3>{person.age}</h3>
+      <h3>{person.message}</h3>
+      <button className='btn' onClick={changeMessage}>
+        Change Message
+      </button>
+    </>
+  )
+}
+
+export default UseStateObject
